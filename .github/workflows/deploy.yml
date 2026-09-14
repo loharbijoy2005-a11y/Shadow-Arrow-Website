@@ -1,0 +1,148 @@
+name: Production CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/shadow-arrow-website
+
+jobs:
+  # ==========================================
+  # JOB 1: Continuous Integration (Lint, Build Test & Security Audit)
+  # ==========================================
+  ci:
+    name: 🧪 CI & Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Run Type Check
+        run: npx tsc --noEmit
+
+      - name: Security Vulnerability Scan with Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'table'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
+
+  # ==========================================
+  # JOB 2: Docker Multi-Stage Build & Push
+  # ==========================================
+  build-and-push:
+    name: 🐳 Build & Push Docker Image
+    needs: ci
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push Production Docker Image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            ${{ env.DOCKER_IMAGE }}:latest
+            ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
+          build-args: |
+            VITE_SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+            VITE_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Scan Docker Image for Vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ env.DOCKER_IMAGE }}:${{ github.sha }}'
+          format: 'table'
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH'
+
+  # ==========================================
+  # JOB 3: Zero-Downtime CD Deployment via SSH
+  # ==========================================
+  deploy:
+    name: 🚀 Deploy to Ubuntu Production Server
+    needs: build-and-push
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute SSH Commands for Deployment
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_PORT || 22 }}
+          script: |
+            set -e
+            echo "🚀 Starting Production Deployment on Ubuntu Server..."
+
+            # Ensure app directory exists
+            mkdir -p /opt/shadow-arrow-website
+            cd /opt/shadow-arrow-website
+
+            # Log in to Docker Hub
+            echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+            # Generate / Update production .env file
+            cat << 'EOF' > .env
+            DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}
+            JWT_SECRET=${{ secrets.JWT_SECRET }}
+            ADMIN_USER=${{ secrets.ADMIN_USER }}
+            ADMIN_PASS=${{ secrets.ADMIN_PASS }}
+            SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+            SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+            EOF
+
+            # Pull latest production Docker image
+            docker compose pull app
+
+            # Zero-downtime rolling reload
+            docker compose up -d --no-deps --build app
+            docker compose up -d nginx
+
+            # Clean up old unused images & build caches
+            docker image prune -af --filter "until=24h"
+
+            # Check container health status
+            echo "Deployment complete! Checking container statuses..."
+            sleep 5
+            docker compose ps
+
+            echo "✅ Deployment completed successfully!"

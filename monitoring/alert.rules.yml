@@ -1,0 +1,42 @@
+groups:
+  - name: shadow_arrow_infrastructure_alerts
+    rules:
+      # High CPU Usage Alert (>85% for 2 minutes)
+      - alert: HighCpuUsage
+        expr: (100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100)) > 85
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High CPU Usage Detected on {{ $labels.instance }}"
+          description: "CPU utilization has exceeded 85% for more than 2 minutes (Current value: {{ $value | printf \"%.2f\" }}%)."
+
+      # High Memory Usage Alert (>85% for 2 minutes)
+      - alert: HighMemoryUsage
+        expr: ((node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100) > 85
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High Memory Usage Detected on {{ $labels.instance }}"
+          description: "RAM utilization has exceeded 85% for more than 2 minutes (Current value: {{ $value | printf \"%.2f\" }}%)."
+
+      # Container Crash / Health Check Failure Alert
+      - alert: ContainerDown
+        expr: up{job="shadow_arrow_app"} == 0
+        for: 30s
+        labels:
+          severity: emergency
+        annotations:
+          summary: "Shadow Arrow Application Container Down"
+          description: "The primary website backend container service is unreachable or crashed!"
+
+      # High Disk Usage Alert (>85%)
+      - alert: HighDiskUsage
+        expr: (node_filesystem_size_bytes{mountpoint="/"} - node_filesystem_free_bytes{mountpoint="/"}) / node_filesystem_size_bytes{mountpoint="/"} * 100 > 85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Server Disk Usage Above 85%"
+          description: "Disk storage on mount point / has exceeded 85% capacity."

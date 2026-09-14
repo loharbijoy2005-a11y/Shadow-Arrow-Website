@@ -261,6 +261,17 @@ app.get('/api/admin/stats', authenticateToken, (req, res) => {
   });
 });
 
+// Serve static frontend build assets in production
+const DIST_DIR = path.join(__dirname, '../dist');
+if (fs.existsSync(DIST_DIR)) {
+  app.use(express.static(DIST_DIR));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(DIST_DIR, 'index.html'));
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`🚀 Shadow Arrow Backend Server running at http://localhost:${PORT}`);
 });
+
