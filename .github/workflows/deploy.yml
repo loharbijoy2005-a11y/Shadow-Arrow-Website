@@ -12,9 +12,9 @@ env:
   DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/shadow-arrow-website
 
 jobs:
-  # ==========================================
+  
   # JOB 1: Continuous Integration (Lint, Build Test & Security Audit)
-  # ==========================================
+  
   ci:
     name: 🧪 CI & Security Audit
     runs-on: ubuntu-latest
@@ -46,13 +46,13 @@ jobs:
           exit-code: '0'
           severity: 'CRITICAL,HIGH'
 
-  # ==========================================
+  
   # JOB 2: Docker Multi-Stage Build & Push
-  # ==========================================
+  
   build-and-push:
     name: 🐳 Build & Push Docker Image
     needs: ci
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && secrets.DOCKERHUB_USERNAME != ''
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -93,13 +93,13 @@ jobs:
           exit-code: '0'
           severity: 'CRITICAL,HIGH'
 
-  # ==========================================
+  
   # JOB 3: Zero-Downtime CD Deployment via SSH
-  # ==========================================
+  
   deploy:
     name: 🚀 Deploy to Ubuntu Production Server
     needs: build-and-push
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && secrets.SERVER_HOST != ''
     runs-on: ubuntu-latest
     steps:
       - name: Execute SSH Commands for Deployment
