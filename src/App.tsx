@@ -141,6 +141,26 @@ const MainWebsite: React.FC = () => {
           <Stats />
         </motion.div>
 
+        {/* Founder positioning & Bio Snippet */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={sectionVariants}
+        >
+          <FounderBio />
+        </motion.div>
+
+        {/* Tech Stack Dual Opposing Marquee & Interactive Skill Matrix */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={sectionVariants}
+        >
+          <TechStackMarquee />
+        </motion.div>
+
         {/* Core Engineering Services Grid */}
         <motion.div
           initial="hidden"
@@ -169,26 +189,6 @@ const MainWebsite: React.FC = () => {
           variants={sectionVariants}
         >
           <TechArchitecture />
-        </motion.div>
-
-        {/* Founder positioning & Bio Snippet */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={sectionVariants}
-        >
-          <FounderBio />
-        </motion.div>
-
-        {/* Tech Stack Dual Opposing Marquee & Interactive Skill Matrix */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={sectionVariants}
-        >
-          <TechStackMarquee />
         </motion.div>
 
         {/* Featured Case Studies & Work */}
