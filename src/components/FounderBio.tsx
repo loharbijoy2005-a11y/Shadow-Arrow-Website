@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { SpotlightCard } from './SpotlightCard';
 import { MagneticButton } from './MagneticButton';
+import { getGitHubAvatarUrl, FALLBACK_AVATAR } from '../utils/githubAvatar';
 import { 
   CheckCircle2, 
   Rocket,
@@ -34,6 +35,7 @@ export const FounderBio: React.FC = () => {
   const [experienceText, setExperienceText] = useState('1-2+ Yrs');
   const [currentHour, setCurrentHour] = useState(new Date().getHours());
   const [isDraggingPopup, setIsDraggingPopup] = useState(false);
+  const [avatarUrl, setAvatarUrl] = useState<string>(getGitHubAvatarUrl());
 
   // Motion Values for Popup Drag Tracking
   const popupX = useMotionValue(0);
@@ -191,7 +193,22 @@ export const FounderBio: React.FC = () => {
       }
     };
 
+    const fetchGitHubAvatar = async () => {
+      try {
+        const res = await fetch('https://api.github.com/users/loharbijoy2005-a11y');
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.avatar_url) {
+            setAvatarUrl(data.avatar_url);
+          }
+        }
+      } catch (err) {
+        // Fallback to direct redirect URL
+      }
+    };
+
     fetchGitHubActivity();
+    fetchGitHubAvatar();
     const ghInterval = setInterval(fetchGitHubActivity, 30000); // Poll telemetry every 30s
 
     return () => {
@@ -458,12 +475,21 @@ export const FounderBio: React.FC = () => {
                 <div className="p-0.5 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 shadow-md">
                   <a href="https://www.bijoylohar.in" target="_blank" rel="noopener noreferrer">
                     <img
-                      src="https://github.com/loharbijoy2005-a11y.png"
+                      src={avatarUrl}
                       alt="Bijoy Lohar - Founder & Principal Systems Developer"
                       width="160"
                       height="160"
-                      loading="lazy"
+                      loading="eager"
                       decoding="async"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (!target.dataset.failedOnce) {
+                          target.dataset.failedOnce = 'true';
+                          target.src = getGitHubAvatarUrl(true);
+                        } else {
+                          target.src = FALLBACK_AVATAR;
+                        }
+                      }}
                       className="w-20 h-20 rounded-full object-cover border-2 border-white mx-auto shadow-inner hover:scale-105 transition-transform"
                     />
                   </a>
