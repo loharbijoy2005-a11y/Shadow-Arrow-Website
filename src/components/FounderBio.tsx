@@ -294,7 +294,7 @@ export const FounderBio: React.FC = () => {
   }, [typedText, activeStep, activeMessageItem.text]);
 
   return (
-    <section className="py-20 bg-white border-t border-slate-200/80 relative z-10 overflow-visible">
+    <section id="about" className="py-20 bg-white border-t border-slate-200/80 relative z-10 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <SpotlightCard className="p-8 sm:p-12 bg-gradient-to-br from-white via-slate-50/50 to-blue-50/30 border border-slate-200/90 shadow-xl overflow-visible" overflowVisible={true} spotlightColor="rgba(59, 130, 246, 0.12)">
@@ -311,7 +311,7 @@ export const FounderBio: React.FC = () => {
             >
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-800 text-xs font-semibold uppercase tracking-wider">
                 <Rocket className="w-3.5 h-3.5 text-blue-600" />
-                <span>Founder & Lead Engineering Philosophy</span>
+                <span>Founder &amp; Leadership Architecture</span>
               </div>
 
               {/* Headline */}
@@ -322,7 +322,7 @@ export const FounderBio: React.FC = () => {
 
               {/* Founder Positioning Copy */}
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
-                Led by <strong className="text-slate-900 font-bold">Bijoy Lohar</strong>, every system at Shadow Arrow is architected, code-reviewed, and optimized directly by the founder. Backed by <strong className="text-gradient-accent font-extrabold">{experienceText} of intensive, project-driven engineering</strong> across TypeScript, JavaScript, Python, and Java, we eliminate agency bloat to deliver robust, enterprise-grade applications built to scale.
+                Led by <strong className="text-slate-900 font-bold">Bijoy Lohar (Founder &amp; Principal Systems Developer)</strong>, every system at Shadow Arrow is architected, code-reviewed, and deployed directly under his leadership. Backed by <strong className="text-gradient-accent font-extrabold">{experienceText} of intensive, project-driven engineering</strong> across TypeScript, JavaScript, Python, and Java, we eliminate agency bloat to deliver robust, enterprise-grade applications built to scale.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs font-medium text-slate-700">
@@ -340,8 +340,21 @@ export const FounderBio: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Official Verified GST Billing & Compliance</span>
+                  <span>Official Verified GST Billing &amp; Compliance</span>
                 </div>
+              </div>
+
+              {/* Interactive Founder Portfolio Link */}
+              <div className="pt-3 flex items-center gap-3">
+                <a
+                  href="https://www.bijoylohar.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-4 py-2.5 rounded-xl border border-blue-200 transition-colors shadow-2xs group"
+                >
+                  <span>Explore Founder Portfolio (bijoylohar.in)</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </a>
               </div>
             </motion.div>
 
@@ -443,15 +456,17 @@ export const FounderBio: React.FC = () => {
 
                 {/* Avatar with Instagram Story Ring */}
                 <div className="p-0.5 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 shadow-md">
-                  <img
-                    src="https://github.com/loharbijoy2005-a11y.png"
-                    alt="Bijoy Lohar - Founder & Lead Engineer"
-                    width="160"
-                    height="160"
-                    loading="lazy"
-                    decoding="async"
-                    className="w-20 h-20 rounded-full object-cover border-2 border-white mx-auto shadow-inner"
-                  />
+                  <a href="https://www.bijoylohar.in" target="_blank" rel="noopener noreferrer">
+                    <img
+                      src="https://github.com/loharbijoy2005-a11y.png"
+                      alt="Bijoy Lohar - Founder & Principal Systems Developer"
+                      width="160"
+                      height="160"
+                      loading="lazy"
+                      decoding="async"
+                      className="w-20 h-20 rounded-full object-cover border-2 border-white mx-auto shadow-inner hover:scale-105 transition-transform"
+                    />
+                  </a>
                 </div>
 
                 {/* Instagram Live Online Indicator Dot */}
@@ -465,9 +480,11 @@ export const FounderBio: React.FC = () => {
 
               <div>
                 <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">
-                  <span className="text-gradient-accent">Bijoy Lohar</span>
+                  <a href="https://www.bijoylohar.in" target="_blank" rel="noopener noreferrer" className="text-gradient-accent hover:underline">
+                    Bijoy Lohar
+                  </a>
                 </h3>
-                <p className="text-xs font-bold text-blue-700 tracking-wide mt-0.5">Founder & Lead Full-Stack Engineer</p>
+                <p className="text-xs font-bold text-blue-700 tracking-wide mt-0.5">Founder &amp; Principal Systems Developer</p>
 
                 {/* Live Developer Status Box */}
                 <div className="mt-3 bg-slate-950 rounded-xl p-3.5 border border-slate-800 text-left shadow-lg font-mono text-[11px] space-y-2">
@@ -495,15 +512,19 @@ export const FounderBio: React.FC = () => {
                 <span>Specializing in React, Next.js, Node.js, Python FastAPI, and Razorpay GST Billing Systems.</span>
               </div>
 
-              <MagneticButton strength={25} className="w-full">
-                <a
-                  href="#contact"
-                  className="w-full py-2.5 px-4 bg-slate-900 hover:bg-blue-600 text-white rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-blue-500/25"
-                >
-                  <span>Direct Founder Consultation</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </MagneticButton>
+              <div className="flex flex-col gap-2">
+                <MagneticButton strength={25} className="w-full">
+                  <a
+                    href="https://www.bijoylohar.in"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-md hover:shadow-blue-500/25"
+                  >
+                    <span>Visit Founder Portfolio</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </MagneticButton>
+              </div>
             </motion.div>
 
           </div>

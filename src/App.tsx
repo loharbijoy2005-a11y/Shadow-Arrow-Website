@@ -12,6 +12,7 @@ import { Stats } from './components/Stats';
 import { FounderBio } from './components/FounderBio';
 import { TechStackMarquee } from './components/TechStackMarquee';
 import { Services } from './components/Services';
+import { StudioEcosystem } from './components/StudioEcosystem';
 import { CaseStudies } from './components/CaseStudies';
 import { TechArchitecture } from './components/TechArchitecture';
 import { MilestoneTimeline } from './components/MilestoneTimeline';
@@ -64,7 +65,7 @@ const MainWebsite: React.FC = () => {
   };
 
   const handleExploreWork = () => {
-    const el = document.getElementById('work');
+    const el = document.getElementById('solutions') || document.getElementById('services');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -140,6 +141,36 @@ const MainWebsite: React.FC = () => {
           <Stats />
         </motion.div>
 
+        {/* Core Engineering Services Grid */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={sectionVariants}
+        >
+          <Services onSelectService={handleSelectService} />
+        </motion.div>
+
+        {/* Studio Ecosystem & Systems Hub (NexusKart Showcase) */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={sectionVariants}
+        >
+          <StudioEcosystem />
+        </motion.div>
+
+        {/* Clean System Architecture & Code Specs */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={sectionVariants}
+        >
+          <TechArchitecture />
+        </motion.div>
+
         {/* Founder positioning & Bio Snippet */}
         <motion.div
           initial="hidden"
@@ -158,16 +189,6 @@ const MainWebsite: React.FC = () => {
           variants={sectionVariants}
         >
           <TechStackMarquee />
-        </motion.div>
-
-        {/* Core Engineering Services Grid */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={sectionVariants}
-        >
-          <Services onSelectService={handleSelectService} />
         </motion.div>
 
         {/* Featured Case Studies & Work */}

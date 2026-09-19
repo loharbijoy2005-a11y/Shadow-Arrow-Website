@@ -20,39 +20,39 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
                 SHADOW<span className="text-blue-400">ARROW</span>
               </span>
               <span className="text-[10px] font-extrabold text-slate-400 tracking-[0.2em] uppercase mt-1 font-mono">
-                WEB ENGINEERING
+                WEB ENGINEERING & SAAS SOLUTIONS
               </span>
             </div>
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-md">
-              High-performance web engineering studio specializing in scalable Next.js applications, e-commerce engines, and enterprise dashboard software. Founded and led by <strong className="text-slate-200">Bijoy Lohar</strong>.
+              Elite high-performance web engineering, SaaS, and systems development firm legally anchored to founder <a href="https://www.bijoylohar.in" target="_blank" rel="noopener noreferrer" className="text-slate-200 font-semibold hover:text-blue-400 hover:underline">Bijoy Lohar</a>.
             </p>
 
             {/* GST Tax Verification Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-mono">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>GST Registered • Verified GST Invoices Provided</span>
+              <span>GST Registered • Verified Tax Invoices Provided</span>
             </div>
           </div>
 
           {/* Quick Nav */}
           <div className="lg:col-span-3 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              Quick Navigation
+              Navigation
             </h3>
             <ul className="space-y-2 text-xs font-medium">
-              <li><a href="#work" className="hover:text-blue-400 transition-colors">Featured Case Studies</a></li>
-              <li><a href="#services" className="hover:text-blue-400 transition-colors">Core Web Engineering</a></li>
-              <li><a href="#architecture" className="hover:text-blue-400 transition-colors">System Architecture</a></li>
-              <li><a href="#process" className="hover:text-blue-400 transition-colors">B2B Milestone Process</a></li>
-              <li><a href="#contact" className="hover:text-blue-400 transition-colors">Cost Estimator Form</a></li>
+              <li><a href="#solutions" className="hover:text-blue-400 transition-colors">Solutions</a></li>
+              <li><a href="#architecture" className="hover:text-blue-400 transition-colors">Architecture</a></li>
+              <li><a href="#ecosystem" className="hover:text-blue-400 transition-colors">Ecosystem</a></li>
+              <li><a href="#about" className="hover:text-blue-400 transition-colors">About</a></li>
+              <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
             </ul>
           </div>
 
-          {/* Contact Details */}
+          {/* Contact & Registered Address */}
           <div className="lg:col-span-4 space-y-3">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-              Direct Contact & Founder Desk
+              Corporate Desk & Address
             </h3>
             <div className="space-y-2.5 text-xs text-slate-300">
               <div className="flex items-center gap-2">
@@ -61,13 +61,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
                   support@shadowarrow.in
                 </a>
               </div>
+              <div className="flex items-start gap-2 text-slate-400">
+                <MapPin className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                <span>Bishnupur, Bankura, West Bengal, 722157, India</span>
+              </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span className="text-slate-300">Fast 24-Hour Proposal Response</span>
-              </div>
-              <div className="flex items-center gap-2 text-slate-400">
-                <MapPin className="w-4 h-4 text-slate-400 shrink-0" />
-                <span>India • Remote Global Engineering</span>
+                <span className="text-slate-300">Verified B2B Entity SLA</span>
               </div>
             </div>
 
@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300"
               >
-                <span>Request Project Proposal</span>
+                <span>Schedule Architecture Review</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -87,7 +87,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
         {/* Footer Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <div>
-            © {new Date().getFullYear()} Shadow Arrow • Engineered by Bijoy Lohar. All rights reserved.
+            © 2026 Shadow Arrow. All Rights Reserved. • Lead Developer: <a href="https://www.bijoylohar.in" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline font-semibold">Bijoy Lohar</a>
           </div>
           <div className="flex items-center gap-4 text-[11px] text-slate-400">
             <button onClick={onOpenPrivacy} className="hover:text-slate-200 transition-colors cursor-pointer">

@@ -22,11 +22,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
 
   const navLinks = [
-    { label: 'Work', href: '#work' },
-    { label: 'Services', href: '#services' },
+    { label: 'Solutions', href: '#solutions' },
     { label: 'Architecture', href: '#architecture' },
-    { label: 'Process', href: '#process' },
-    { label: 'Pricing', href: '#pricing' },
+    { label: 'Ecosystem', href: '#ecosystem' },
+    { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
 
