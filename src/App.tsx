@@ -171,7 +171,7 @@ const MainWebsite: React.FC = () => {
           <Services onSelectService={handleSelectService} />
         </motion.div>
 
-        {/* Studio Ecosystem & Systems Hub (NexusKart Showcase) */}
+        {/* Studio Ecosystem & Systems Hub (OmniKart - Powered by Shadow Arrow Showcase) */}
         <motion.div
           initial="hidden"
           whileInView="visible"

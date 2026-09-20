@@ -169,7 +169,7 @@ export async function ProductCatalog({ categoryId }: { categoryId: string }) {
     techs: [
       { name: 'Node.js & Express / Fastify', desc: 'Asynchronous event loops built for thousands of concurrent requests', icon: 'Cpu' },
       { name: 'Razorpay & Stripe Webhook Hub', desc: 'Idempotent transaction processing with automated retries', icon: 'CreditCard' },
-      { name: 'PostgreSQL & Prisma ORM', desc: 'ACID-compliant relational database schemas with strict migrations', icon: 'Database' }
+      { name: 'MongoDB & PostgreSQL (Prisma / Mongoose)', desc: 'High-availability NoSQL document stores & ACID relational schemas with strict migrations', icon: 'Database' }
     ],
     codeSnippet: `// Robust GST-Compliant Payment Verification Webhook
 app.post('/api/webhooks/razorpay', async (req, res) => {

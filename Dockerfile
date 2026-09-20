@@ -1,6 +1,6 @@
-# ==========================================
+
 # STAGE 1: Build Stage
-# ==========================================
+
 FROM node:22-alpine AS builder
 
 WORKDIR /app
@@ -22,9 +22,9 @@ COPY . .
 # Build static production assets
 RUN npm run build
 
-# ==========================================
+
 # STAGE 2: Production Runtime Stage
-# ==========================================
+
 FROM node:22-alpine AS runner
 
 WORKDIR /app

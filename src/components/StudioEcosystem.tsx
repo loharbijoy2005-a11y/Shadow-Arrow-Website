@@ -2,17 +2,20 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { SpotlightCard } from './SpotlightCard';
 import { MagneticButton } from './MagneticButton';
-import { 
-  Layers, 
-  Cloud, 
-  ShoppingBag, 
-  Sparkles, 
-  ArrowUpRight, 
-  ShieldCheck, 
-  Zap, 
+import {
+  Layers,
+  Cloud,
+  ShoppingBag,
+  Sparkles,
+  ShieldCheck,
+  Zap,
   Server,
-  CheckCircle2
+  CheckCircle2,
+  ExternalLink,
+  Globe
 } from 'lucide-react';
+
+const OMNIKART_LIVE_URL = "https://shadow-arrow-backend.vercel.app/";
 
 export const StudioEcosystem: React.FC = () => {
   const pillarCards = [
@@ -40,23 +43,23 @@ export const StudioEcosystem: React.FC = () => {
       category: 'COMMERCE PILLAR',
       title: 'Digital Commerce Solutions',
       description: 'Headless e-commerce engines with real-time cart state, Razorpay/Stripe automated GST invoicing, dynamic checkout flows, and ERP integrations.',
-      tags: ['Headless Cart', 'Razorpay GST', 'Stripe Payments', 'PostgreSQL', 'Webhooks'],
+      tags: ['Headless Cart', 'MongoDB Atlas', 'Razorpay GST', 'Stripe Payments', 'PostgreSQL', 'Webhooks'],
       stat: 'Sub-Second Checkout'
     }
   ];
 
   return (
     <section id="ecosystem" className="py-24 bg-white border-t border-slate-200/80 relative z-10 overflow-hidden">
-      
+
       {/* Background Decorative Grids */}
       <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-400/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
-        
+
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -131,7 +134,7 @@ export const StudioEcosystem: React.FC = () => {
           })}
         </div>
 
-        {/* Featured Internal Ecosystem Showcase: NexusKart */}
+        {/* Featured Internal Ecosystem Showcase: OmniKart */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -144,7 +147,7 @@ export const StudioEcosystem: React.FC = () => {
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            
+
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-mono font-semibold">
@@ -154,7 +157,7 @@ export const StudioEcosystem: React.FC = () => {
 
               <div>
                 <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-                  NexusKart <span className="text-slate-400 text-2xl sm:text-3xl font-normal">— Powered by Shadow Arrow</span>
+                  OmniKart <span className="text-blue-400 text-xl sm:text-2xl font-bold block sm:inline mt-1 sm:mt-0">— Powered by Shadow Arrow</span>
                 </h3>
                 <p className="text-xs font-mono text-emerald-400 mt-2 flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
@@ -163,7 +166,7 @@ export const StudioEcosystem: React.FC = () => {
               </div>
 
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                NexusKart is Shadow Arrow’s flagship internal e-commerce engine and digital marketplace platform. Engineered from the ground up using headless microservices, real-time edge inventory sync, and automated GST tax invoicing, NexusKart serves as our benchmark for high-concurrency web systems.
+                OmniKart is Shadow Arrow’s flagship internal e-commerce engine and digital marketplace platform. Engineered from the ground up using headless microservices, real-time edge inventory sync, and automated GST tax invoicing, OmniKart serves as our benchmark for high-concurrency web systems.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
@@ -188,18 +191,25 @@ export const StudioEcosystem: React.FC = () => {
               <div className="pt-2 flex flex-wrap items-center gap-4">
                 <MagneticButton>
                   <a
-                    href="#contact"
-                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-xl font-bold text-xs shadow-lg shadow-blue-600/30 transition-all cursor-pointer"
+                    href={OMNIKART_LIVE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-6 py-3.5 rounded-xl font-extrabold text-xs shadow-lg shadow-blue-600/40 transition-all cursor-pointer border border-blue-400/30 group"
                   >
-                    <span>Request E-Commerce Blueprint</span>
-                    <ArrowUpRight className="w-4 h-4" />
+                    <span>Visit OmniKart</span>
+                    <span className="text-blue-200 font-normal">(Powered by Shadow Arrow)</span>
+                    <ExternalLink className="w-4 h-4 ml-0.5 group-hover:translate-x-0.5 transition-transform" />
                   </a>
                 </MagneticButton>
+
                 <a
-                  href="#architecture"
-                  className="text-xs font-semibold text-slate-300 hover:text-white flex items-center gap-1"
+                  href={OMNIKART_LIVE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono font-semibold text-slate-300 hover:text-white flex items-center gap-1.5 bg-slate-900 border border-slate-800 px-4 py-3 rounded-xl transition-all"
                 >
-                  View Tech Architecture Specs →
+                  <Globe className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Live OmniKart App ↗</span>
                 </a>
               </div>
             </div>
@@ -209,21 +219,42 @@ export const StudioEcosystem: React.FC = () => {
               <div className="flex items-center justify-between pb-3 border-b border-slate-800 text-xs font-mono">
                 <div className="flex items-center gap-2 text-slate-300">
                   <Server className="w-4 h-4 text-blue-400" />
-                  <span>nexuskart.internal.sys</span>
+                  <span>OmniKart Powered by Shadow Arrow</span>
                 </div>
-                <span className="text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
-                  LIVE ECOSYSTEM
-                </span>
+                <a
+                  href={OMNIKART_LIVE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 font-bold bg-emerald-950/80 hover:bg-emerald-900 px-2.5 py-1 rounded border border-emerald-800 flex items-center gap-1.5 transition-all text-[11px]"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  LIVE SYSTEM ↗
+                </a>
               </div>
 
               <div className="space-y-2 text-xs font-mono text-slate-300">
+                <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                  <span className="text-slate-400">Platform Name:</span>
+                  <span className="text-white font-bold">OmniKart (by Shadow Arrow)</span>
+                </div>
+                <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                  <span className="text-slate-400">Platform Link:</span>
+                  <a
+                    href={OMNIKART_LIVE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 font-bold hover:underline truncate max-w-[190px]"
+                  >
+                    OmniKart Live Platform ↗
+                  </a>
+                </div>
                 <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
                   <span className="text-slate-400">Internal Engine:</span>
                   <span className="text-white font-bold">Shadow Arrow Core v4.2</span>
                 </div>
                 <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
                   <span className="text-slate-400">Database Layer:</span>
-                  <span className="text-blue-400 font-bold">PostgreSQL + Redis Edge</span>
+                  <span className="text-emerald-400 font-bold">MongoDB Atlas + PostgreSQL + Redis Edge</span>
                 </div>
                 <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
                   <span className="text-slate-400">Payment Gateway:</span>
@@ -231,10 +262,18 @@ export const StudioEcosystem: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-blue-950/40 border border-blue-800/60 p-3 rounded-xl text-[11px] text-blue-200 flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>100% Contract & SLA Protected Enterprise Project</span>
-              </div>
+              <a
+                href={OMNIKART_LIVE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-950/40 hover:bg-blue-900/60 border border-blue-800/60 p-3 rounded-xl text-[11px] text-blue-200 flex items-center justify-between group transition-all"
+              >
+                <div className="flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-blue-400 shrink-0" />
+                  <span>OmniKart Live Platform (Powered by Shadow Arrow)</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-0.5 transition-transform" />
+              </a>
             </div>
 
           </div>
