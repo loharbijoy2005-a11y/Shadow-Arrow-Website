@@ -26,7 +26,7 @@ import { TermsOfServiceModal } from './components/TermsOfServiceModal';
 import { ScrollToTop } from './components/ScrollToTop';
 import { CommandPaletteModal } from './components/CommandPaletteModal';
 import { ROICalculator } from './components/ROICalculator';
-import { FAQSection } from './components/FAQSection';
+import { FAQModal } from './components/FAQModal';
 import { OfflineBanner } from './components/OfflineBanner';
 
 const sectionVariants = {
@@ -43,6 +43,7 @@ const MainWebsite: React.FC = () => {
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
   const [termsModalOpen, setTermsModalOpen] = useState(false);
+  const [faqModalOpen, setFaqModalOpen] = useState(false);
   const [cmdPaletteOpen, setCmdPaletteOpen] = useState(false);
   const [selectedServiceId, setSelectedServiceId] = useState<string | undefined>(undefined);
   const [selectedCaseStudyTitle, setSelectedCaseStudyTitle] = useState<string | undefined>(undefined);
@@ -259,22 +260,19 @@ const MainWebsite: React.FC = () => {
           />
         </motion.div>
 
-        {/* Frequently Asked Questions (FAQ) Section - Positioned Right Above Footer */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={sectionVariants}
-        >
-          <FAQSection />
-        </motion.div>
-
       </main>
 
       {/* Footer */}
       <Footer
         onOpenPrivacy={() => setPrivacyModalOpen(true)}
         onOpenTerms={() => setTermsModalOpen(true)}
+        onOpenFAQ={() => setFaqModalOpen(true)}
+      />
+
+      {/* Interactive FAQ Knowledge Base Modal */}
+      <FAQModal
+        isOpen={faqModalOpen}
+        onClose={() => setFaqModalOpen(false)}
       />
 
       {/* Direct Discovery Call Booking Modal */}
