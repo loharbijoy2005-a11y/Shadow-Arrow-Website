@@ -246,16 +246,6 @@ const MainWebsite: React.FC = () => {
           <PricingTiers onSelectTier={handleSelectPricingTier} />
         </motion.div>
 
-        {/* Frequently Asked Questions (FAQ) Section - Rich Search Engine Indexing */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={sectionVariants}
-        >
-          <FAQSection />
-        </motion.div>
-
         {/* Interactive Scope Estimator & Contact Form */}
         <motion.div
           initial="hidden"
@@ -267,6 +257,16 @@ const MainWebsite: React.FC = () => {
             preselectedServiceId={selectedServiceId}
             preselectedTitle={selectedCaseStudyTitle}
           />
+        </motion.div>
+
+        {/* Frequently Asked Questions (FAQ) Section - Positioned Right Above Footer */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={sectionVariants}
+        >
+          <FAQSection />
         </motion.div>
 
       </main>

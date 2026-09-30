@@ -45,6 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               <li><a href="#architecture" className="hover:text-blue-400 transition-colors">Architecture</a></li>
               <li><a href="#ecosystem" className="hover:text-blue-400 transition-colors">Ecosystem</a></li>
               <li><a href="#about" className="hover:text-blue-400 transition-colors">About</a></li>
+              <li><a href="#faq" className="hover:text-blue-400 transition-colors">FAQ Base</a></li>
               <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
             </ul>
           </div>
