@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HelpCircle, X, Search, ChevronDown, Sparkles, MessageSquare, ArrowRight, ShieldCheck } from 'lucide-react';
+import { HelpCircle, X, Search, ChevronDown, MessageSquare, ArrowRight, ShieldCheck } from 'lucide-react';
 
 interface FAQModalProps {
   isOpen: boolean;
@@ -11,45 +11,45 @@ interface FAQItem {
   id: string;
   question: string;
   answer: string;
-  category: 'General' | 'Technical' | 'Compliance' | 'Process';
+  category: 'Services' | 'Delivery' | 'Compliance' | 'Support';
 }
 
 const faqs: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'What services does Shadow Arrow provide?',
-    answer: 'Shadow Arrow is an elite web engineering studio led by Bijoy Lohar. We specialize in custom full-stack web applications, Next.js 14 and React 19 platforms, headless e-commerce engines, sub-second speed optimization (TTFB < 100ms), and GST-compliant B2B systems.',
-    category: 'General'
+    question: 'What types of web applications and software systems does Shadow Arrow build?',
+    answer: 'Shadow Arrow specializes in high-performance web engineering. We build custom full-stack web applications, enterprise SaaS platforms, headless e-commerce engines, real-time analytics dashboards, and scalable API microservices using React 19, Next.js 14, Node.js, Python FastAPI, and PostgreSQL / Supabase.',
+    category: 'Services'
   },
   {
     id: 'faq-2',
-    question: 'Who leads web engineering at Shadow Arrow?',
-    answer: 'Every project at Shadow Arrow is architected, code-reviewed, and deployed under the direct leadership of founder Bijoy Lohar. We eliminate middleman agency bloat, giving you direct 1-on-1 engineering access and uncompromised software quality.',
-    category: 'General'
+    question: 'How are project timelines and production milestones managed?',
+    answer: 'Every project follows a structured 4-phase milestone process: 1) Requirement Scoping & Technical Architecture Blueprint, 2) Core Frontend & Backend Engineering, 3) Performance Audit & Security Testing, and 4) Production Deployment & Handover. Standard production sprints take 2 to 4 weeks based on project scope.',
+    category: 'Delivery'
   },
   {
     id: 'faq-3',
-    question: 'Does Shadow Arrow provide tax-compliant GST invoicing?',
-    answer: 'Yes! Shadow Arrow is a verified GST-registered enterprise entity (GSTIN: 19BVKPL6301H1ZH). We provide official tax invoices for all Indian B2B clients, enabling seamless input tax credit (ITC) claims.',
+    question: 'Will my business receive full ownership of the source code and IP?',
+    answer: 'Yes, 100%. Upon completion of final delivery and milestone sign-off, all source code repositories, intellectual property rights, database schemas, and deployment assets are fully transferred to your business with zero lock-in.',
     category: 'Compliance'
   },
   {
     id: 'faq-4',
-    question: 'What is the typical turnaround time for custom web applications?',
-    answer: 'Our standard production sprint ranges from 2 to 4 weeks depending on application scope, custom API requirements, and system integrations. We follow a 4-milestone roadmap (Blueprint, Core Engine, Performance Audit, Live Launch).',
-    category: 'Process'
+    question: 'How are GST invoices and B2B contract agreements handled?',
+    answer: 'Shadow Arrow is a registered corporate GST B2B entity (GSTIN: 19BVKPL6301H1ZH). We issue formal, legally binding project contracts and tax invoices with complete GST details, enabling seamless input tax credit (ITC) claims for Indian enterprises.',
+    category: 'Compliance'
   },
   {
     id: 'faq-5',
-    question: 'How does Shadow Arrow guarantee sub-second performance & SEO rank?',
-    answer: 'We build with zero-bloat modern stacks (Next.js 14 App Router, React 19, Tailwind, Vite, FastAPI), enforcing strict Core Web Vitals targets: LCP < 1.2s, FID < 50ms, CLS = 0. All pages feature full server/static pre-rendering, rich JSON-LD schema markup, and geo-targeted meta descriptors for #1 Google ranking.',
-    category: 'Technical'
+    question: 'What post-launch technical support and maintenance is included?',
+    answer: 'All projects include 30 to 90 days of complimentary post-launch technical support. This covers bug remediation, server infrastructure monitoring, performance optimization, and minor UI adjustments. Ongoing monthly maintenance retainers are also available.',
+    category: 'Support'
   },
   {
     id: 'faq-6',
-    question: 'Do you offer ongoing post-launch SLA support & maintenance?',
-    answer: 'Yes. Every project includes 30 to 90 days of complimentary post-launch technical support, bug fixing, and continuous performance monitoring. Retainer plans are available for enterprise scaling.',
-    category: 'Process'
+    question: 'How do we track development progress and communicate during the build?',
+    answer: 'You receive direct access to founder Bijoy Lohar and our development team via dedicated WhatsApp / Slack channels and email. We provide weekly staging environment previews and GitHub commit tracking so you have complete visibility over build progress.',
+    category: 'Delivery'
   }
 ];
 
@@ -60,7 +60,7 @@ export const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
-  const categories = ['All', 'General', 'Technical', 'Compliance', 'Process'];
+  const categories = ['All', 'Services', 'Delivery', 'Compliance', 'Support'];
 
   const filteredFaqs = faqs.filter((faq) => {
     const matchesCategory = activeCategory === 'All' || faq.category === activeCategory;
@@ -103,7 +103,7 @@ export const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                   FREQUENTLY ASKED QUESTIONS
                 </h2>
                 <p className="text-xs text-slate-400 font-mono mt-0.5">
-                  Shadow Arrow Engineering Base • Founder-Led Specs &amp; Technical Guidance
+                  Shadow Arrow Engineering Knowledge Base • Technical &amp; Delivery Specifications
                 </p>
               </div>
             </div>
@@ -125,7 +125,7 @@ export const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search questions, services, GST billing, tech stack..."
+                placeholder="Search questions, services, GST invoices, timelines, source code..."
                 className="w-full bg-slate-950 border border-slate-700 rounded-xl pl-11 pr-4 py-2.5 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500 transition-colors font-mono"
               />
               {searchQuery && (
@@ -200,10 +200,6 @@ export const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
                         >
                           <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800 font-normal">
                             <p>{faq.answer}</p>
-                            <div className="mt-3 inline-flex items-center gap-2 text-[11px] font-mono text-blue-400 bg-blue-500/10 px-3 py-1 rounded-md border border-blue-500/20">
-                              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                              <span>Verified Shadow Arrow Standard • Founder Approved</span>
-                            </div>
                           </div>
                         </motion.div>
                       )}
@@ -218,7 +214,7 @@ export const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
           <div className="p-6 bg-slate-950 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
             <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Have an unlisted custom requirement? Speak directly with Bijoy Lohar.</span>
+              <span>Need a custom architecture estimate? Schedule a direct engineering review.</span>
             </div>
 
             <button
@@ -226,7 +222,7 @@ export const FAQModal: React.FC<FAQModalProps> = ({ isOpen, onClose }) => {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold font-mono px-5 py-2.5 rounded-xl shadow-md transition-all hover:scale-105 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Schedule Engineering Call</span>
+              <span>Schedule Architecture Review</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>

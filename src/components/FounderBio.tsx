@@ -227,22 +227,22 @@ export const FounderBio: React.FC = () => {
     if (currentHour >= 5 && currentHour < 12) {
       return {
         icon: <Sun className="w-3.5 h-3.5 text-amber-400 shrink-0" />,
-        text: 'Good Morning! ☀️'
+        text: 'Good Morning!'
       };
     } else if (currentHour >= 12 && currentHour < 17) {
       return {
         icon: <Coffee className="w-3.5 h-3.5 text-amber-500 shrink-0" />,
-        text: 'Good Afternoon! ☕'
+        text: 'Good Afternoon!'
       };
     } else if (currentHour >= 17 && currentHour < 22) {
       return {
         icon: <Sunset className="w-3.5 h-3.5 text-orange-400 shrink-0" />,
-        text: 'Good Evening! 🌅'
+        text: 'Good Evening!'
       };
     } else {
       return {
         icon: <Moon className="w-3.5 h-3.5 text-indigo-400 shrink-0" />,
-        text: 'Late Night Coding 🌙'
+        text: 'Late Night Coding'
       };
     }
   };
@@ -250,39 +250,39 @@ export const FounderBio: React.FC = () => {
   const brandMessagesList = [
     {
       icon: <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />,
-      text: 'Official GST-Verified Invoicing & Compliance 📜'
+      text: 'Official GST-Verified Invoicing & Compliance'
     },
     {
       icon: <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />,
-      text: 'Engineered for Performance • Built for Business Growth 🚀'
+      text: 'Engineered for Performance • Built for Business Growth'
     },
     {
       icon: <Code className="w-3.5 h-3.5 text-blue-400 shrink-0" />,
-      text: 'Production-Ready Next.js & TypeScript Platforms ⚡'
+      text: 'Production-Ready Next.js & TypeScript Platforms'
     },
     {
       icon: <Gauge className="w-3.5 h-3.5 text-emerald-400 shrink-0" />,
-      text: 'Sub-Second Response Times (TTFB < 100ms) ⏱️'
+      text: 'Sub-Second Response Times (TTFB < 100ms)'
     },
     {
       icon: <Rocket className="w-3.5 h-3.5 text-amber-400 shrink-0" />,
-      text: 'Direct Founder Accountability • Zero Agency Bloat 👤'
+      text: 'Direct Founder Accountability • Zero Agency Bloat'
     },
     {
       icon: <Gauge className="w-3.5 h-3.5 text-emerald-400 shrink-0" />,
-      text: 'Google Core Web Vitals Benchmark: 99 / 100 🎯'
+      text: 'Google Core Web Vitals Benchmark: 99 / 100'
     },
     {
       icon: <TrendingUp className="w-3.5 h-3.5 text-blue-400 shrink-0" />,
-      text: 'Average Client Conversion Boost +240% 📈'
+      text: 'Average Client Conversion Boost +240%'
     },
     {
       icon: <Sparkles className="w-3.5 h-3.5 text-purple-400 shrink-0" />,
-      text: 'React 19 • Next.js • Python FastAPI • Supabase ✨'
+      text: 'React 19 • Next.js • Python FastAPI • Supabase'
     },
     {
       icon: <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />,
-      text: '100% Founder-Led Codebase Architecture 💎'
+      text: '100% Founder-Led Codebase Architecture'
     }
   ];
 

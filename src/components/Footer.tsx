@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Mail, MapPin, ArrowUpRight } from 'lucide-react';
+import { ShieldCheck, Mail, MapPin, ArrowUpRight, HelpCircle } from 'lucide-react';
 
 interface FooterProps {
   onOpenPrivacy?: () => void;
@@ -49,10 +49,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
               <li>
                 <button 
                   onClick={onOpenFAQ} 
-                  className="hover:text-blue-400 transition-colors cursor-pointer text-left font-medium text-slate-300 flex items-center gap-1.5"
+                  className="hover:text-blue-400 transition-colors cursor-pointer text-left font-medium text-slate-300 inline-flex items-center gap-1.5"
                 >
-                  <span>Frequently Asked Questions (FAQ)</span>
-                  <span className="text-[10px] bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded font-mono">Modal</span>
+                  <HelpCircle className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Frequently Asked Questions</span>
                 </button>
               </li>
               <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
@@ -81,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
               </div>
             </div>
 
-            <div className="pt-2 flex flex-wrap items-center gap-3">
+            <div className="pt-2">
               <a
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-400 hover:text-blue-300"
@@ -89,13 +89,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
                 <span>Schedule Architecture Review</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
-
-              <button
-                onClick={onOpenFAQ}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/40 text-blue-300 text-xs font-mono font-bold transition-all cursor-pointer"
-              >
-                <span>❓ Open FAQ Knowledge Base</span>
-              </button>
             </div>
           </div>
 
@@ -106,11 +99,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms, onOp
           <div>
             © 2026 Shadow Arrow. All Rights Reserved. • Lead Developer: <a href="https://www.bijoylohar.in" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline font-semibold">Bijoy Lohar</a>
           </div>
-          <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-400">
-            <button onClick={onOpenFAQ} className="hover:text-blue-400 transition-colors cursor-pointer text-slate-300 font-semibold">
-              FAQ Base
-            </button>
-            <span>•</span>
+          <div className="flex items-center gap-4 text-[11px] text-slate-400">
             <button onClick={onOpenPrivacy} className="hover:text-slate-200 transition-colors cursor-pointer">
               Privacy Policy
             </button>
