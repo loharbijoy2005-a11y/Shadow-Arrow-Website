@@ -26,6 +26,8 @@ import { TermsOfServiceModal } from './components/TermsOfServiceModal';
 import { ScrollToTop } from './components/ScrollToTop';
 import { CommandPaletteModal } from './components/CommandPaletteModal';
 import { ROICalculator } from './components/ROICalculator';
+import { FAQSection } from './components/FAQSection';
+import { OfflineBanner } from './components/OfflineBanner';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 35, filter: 'blur(8px)' },
@@ -96,6 +98,9 @@ const MainWebsite: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#1C1917] selection:bg-amber-100 selection:text-amber-900 font-sans relative overflow-x-hidden">
+
+      {/* Offline Status & Connection Indicator Banner */}
+      <OfflineBanner />
 
       {/* Cinematic Splash Intro Preloader */}
       <CinematicSplash onComplete={() => setIsSplashActive(false)} />
@@ -201,16 +206,6 @@ const MainWebsite: React.FC = () => {
           <CaseStudies onSelectForQuote={handleSelectForQuote} />
         </motion.div>
 
-        {/* Clean System Architecture & Code Specs */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={sectionVariants}
-        >
-          <TechArchitecture />
-        </motion.div>
-
         {/* The 3-4 Week Production Journey Milestone Roadmap */}
         <motion.div
           initial="hidden"
@@ -249,6 +244,16 @@ const MainWebsite: React.FC = () => {
           variants={sectionVariants}
         >
           <PricingTiers onSelectTier={handleSelectPricingTier} />
+        </motion.div>
+
+        {/* Frequently Asked Questions (FAQ) Section - Rich Search Engine Indexing */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          variants={sectionVariants}
+        >
+          <FAQSection />
         </motion.div>
 
         {/* Interactive Scope Estimator & Contact Form */}

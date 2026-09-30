@@ -2,16 +2,34 @@
   "name": "Shadow Arrow Web Engineering",
   "short_name": "Shadow Arrow",
   "start_url": "/",
+  "scope": "/",
+  "id": "/",
   "display": "standalone",
-  "background_color": "#F8FAFC",
+  "orientation": "any",
+  "background_color": "#0F172A",
   "theme_color": "#0F172A",
-  "description": "High-Performance Full-Stack Web Development, Headless E-Commerce, and SaaS Architecture Studio led by Bijoy Lohar.",
+  "description": "Elite High-Performance Web Engineering, SaaS Solutions, and Headless E-Commerce Studio led by Bijoy Lohar.",
+  "categories": ["business", "developer", "productivity", "utilities"],
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Services & Solutions",
+      "short_name": "Solutions",
+      "url": "/#solutions",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Contact & Estimate",
+      "short_name": "Contact",
+      "url": "/#contact",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
     }
   ]
 }

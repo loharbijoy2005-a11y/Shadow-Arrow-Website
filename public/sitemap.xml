@@ -1,12 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Primary Homepage & Engineering Portal -->
   <url>
     <loc>https://www.shadowarrow.in/</loc>
-    <lastmod>2026-09-19</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.00</priority>
+    <image:image>
+      <image:loc>https://www.shadowarrow.in/logo.png</image:loc>
+      <image:title>Shadow Arrow Web Engineering &amp; SaaS Solutions Studio</image:title>
+    </image:image>
+  </url>
+
+  <!-- Solutions & Web Architecture -->
+  <url>
+    <loc>https://www.shadowarrow.in/#solutions</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Founder Positioning & Leadership (Bijoy Lohar) -->
+  <url>
+    <loc>https://www.shadowarrow.in/#about</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Studio Ecosystem & OmniKart Systems -->
+  <url>
+    <loc>https://www.shadowarrow.in/#ecosystem</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Pricing, GST Compliance & Cost Estimator -->
+  <url>
+    <loc>https://www.shadowarrow.in/#pricing</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- FAQ & Architectural Guidance -->
+  <url>
+    <loc>https://www.shadowarrow.in/#faq</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Contact & Discovery Engineering Consultation -->
+  <url>
+    <loc>https://www.shadowarrow.in/#contact</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
 </urlset>

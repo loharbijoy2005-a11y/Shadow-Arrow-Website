@@ -1,8 +1,29 @@
-# Shadow Arrow Web Engineering - Robots.txt
+# Shadow Arrow Web Engineering Studio - Search Engine Crawler Directive
+# Website: https://www.shadowarrow.in
+# Founder: Bijoy Lohar
+
 User-agent: *
 Allow: /
+Allow: /#solutions
+Allow: /#about
+Allow: /#ecosystem
+Allow: /#pricing
+Allow: /#faq
+Allow: /#contact
 Disallow: /api/
 Disallow: /admin
+Disallow: /admin-dashboard
 
-# Sitemap URL for Googlebot & Bingbot
+User-agent: Googlebot
+Allow: /
+Allow: /sitemap.xml
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap Indexing
 Sitemap: https://www.shadowarrow.in/sitemap.xml
+Host: https://www.shadowarrow.in
